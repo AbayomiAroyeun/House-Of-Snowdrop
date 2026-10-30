@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Vault Archives | House of Snow Drop</title>
+    <!-- FontAwesome Library Link for Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- GLOBAL NAVBAR -->
+    <header>
+        <div class="logo-area">
+            <div class="logo-container">
+                <img src="YOUR_LOGO_IMAGE_URL_HERE.png" alt="Logo" class="spinning-logo" id="clickable-logo"
+                    style="cursor: pointer;">
+            </div>
+            <div class="brand-text">
+                <h1>House of Snow Drop</h1>
+                <div class="datetime-display" id="vault-datetime">Loading Date & Time...</div>
+            </div>
+        </div>
+        <div class="hamburger" id="menu-toggle"><span></span><span></span><span></span></div>
+        
+        <!-- Corrected cross-page navigation menu loops linking back to index.html -->
+        <nav class="nav-menu" id="nav-links">
+            <a href="index.html" class="nav-item">Home Hub</a>
+            <a href="gallery.html" class="nav-item">All Designs</a>
+            <a href="instock.html" class="nav-item">In Stock Only</a>
+            <a href="soldout.html" class="nav-item">Sold Out Archive</a>
+            <a href="index.html#videos-col" class="nav-item">Social Adverts</a>
+            <a href="index.html#ceo-desk" class="nav-item">CEO's Desk</a>
+            <a href="index.html#contact-footer" class="nav-item">Find Our Store</a>
+        </nav>
+    </header>
+
+    <section class="hero"
+        style="height: 25vh; margin-top: 70px; background: linear-gradient(rgba(239, 68, 68, 0.6), rgba(15, 23, 42, 0.85));">
+        <h2>The Design Vault</h2>
+        <p>Historical archive items. Quote the reference number to request a custom look-alike commission</p>
+    </section>
+
+    <main style="max-width: 1400px; margin: 2rem auto; padding: 0 5%;">
+        <div style="margin-bottom: 2rem;">
+            <a href="gallery.html" class="ceo-btn" style="margin-top:0; background: #475569;">← Back to Full Collection</a>
+        </div>
+        <div class="gallery-grid" id="master-gallery"></div>
+    </main>
+
+    <div class="lightbox" id="lightbox-modal">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Maximized View">
+    </div>
+
+    <script>
+        const galleryInventory = [
+            { id: "HSD-001", src: 'https://unsplash.com', status: 'In Stock' },
+            { id: "HSD-002", src: 'https://unsplash.com', status: 'Sold Out' },
+            { id: "HSD-003", src: 'https://unsplash.com', status: 'In Stock' },
+            { id: "HSD-004", src: 'https://unsplash.com', status: 'Sold Out' },
+            { id: "HSD-005", src: 'https://unsplash.com', status: 'In Stock' },
+            { id: "HSD-006", src: 'https://unsplash.com', status: 'In Stock' }
+        ];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeBox = document.getElementById('vault-datetime');
+            const updateTime = () => {
+                timeBox.textContent = new Date().toLocaleDateString('en-US', {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
+                });
+            };
+            setInterval(updateTime, 1000); updateTime();
+
+            document.getElementById('menu-toggle').addEventListener('click', () => {
+                document.getElementById('nav-links').classList.toggle('active');
+            });
+
+            const container = document.getElementById('master-gallery');
+            const archivedDesigns = galleryInventory.filter(item => item.status === 'Sold Out');
+            const shuffledItems = shuffle([...archivedDesigns]);
+
+            // FIXED PARAMETER: Added 'index' into the array mapping function argument list
+            shuffledItems.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'gallery-item';
+
+                // Safely configures the dynamic item fade delay sequentially
+                card.style.animationDelay = `${index * 0.1}s`;
+
+                card.innerHTML = `
+                    <img src="${item.src}" alt="Archived Creation">
+                    <span class="sold status-badge">Sold Out</span>
+                    <div style="position: absolute; top: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 2px 6px; font-size: 0.75rem; border-radius: 4px; font-weight: bold; z-index:10;">Ref: ${item.id}</div>
+                `;
+                
+                card.addEventListener('click', () => {
+                    document.getElementById('lightbox-img').src = item.src;
+                    document.getElementById('lightbox-modal').style.display = 'flex';
+                });
+                container.appendChild(card);
+            });
+
+            // Logo lightbox click engine integrations
+            const brandLogo = document.getElementById('clickable-logo');
+            if (brandLogo) { brandLogo.addEventListener('click', () => { document.getElementById('lightbox-img').src = brandLogo.src; document.getElementById('lightbox-modal').style.display = 'flex'; }); }
+            document.getElementById('lightbox-close').addEventListener('click', () => { document.getElementById('lightbox-modal').style.display = 'none'; });
+            document.getElementById('lightbox-modal').addEventListener('click', (e) => { if (e.target === document.getElementById('lightbox-modal')) document.getElementById('lightbox-modal').style.display = 'none'; });
+        });
+    </script>
+</body>
+
+</html>

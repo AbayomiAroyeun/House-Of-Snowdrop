@@ -1,0 +1,412 @@
+/* ==========================================================================
+   HOUSE OF SNOW DROP - GLOBAL PRODUCTION STYLESHEET
+   ========================================================================== */
+
+/* ROOT VARIABLES & RESET */
+:root {
+    --primary: #0f172a; /* Deep Slate Blue */
+    --accent: #2563eb;  /* Royal Blue Accent */
+    --light: #f8fafc;   /* White Snowdrop Base */
+    --text: #334155;    /* Clear Text Color */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* HEADER & LOGO AREA INITIALIZATION */
+header {
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* INFINITE 60-SECOND ALTERNATING LOGO LOOP */
+.spinning-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: alternatingSpin 60s linear infinite;
+}
+
+@keyframes alternatingSpin {
+    0% { transform: rotate(0deg); }
+    66.67% { transform: rotate(360deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.brand-text h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.datetime-display {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+/* HAMBURGER MENU ACTIONS */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    padding: 8rem 2rem 2rem 2rem;
+    gap: 1.5rem;
+    transition: right 0.4s cubic-bezier(0.1, 1, 0.1, 1);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-menu.active {
+    right: 0;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--accent);
+}
+
+/* HERO BANNER SECTION */
+.hero {
+    margin-top: 70px;
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://unsplash.com') no-repeat center center/cover;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 3-COLUMN STRUCTURE MAIN PAGE CONFIG */
+.main-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 2rem;
+}
+
+.column {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+}
+
+.column h3 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ARTICLES TEXT AREA */
+.article-placeholder {
+    border-left: 4px solid #cbd5e1;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.article-placeholder h4 {
+    color: #1e293b;
+    margin-bottom: 0.3rem;
+}
+
+.article-placeholder p {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* PRODUCT MATRIX CATALOG GRID */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    opacity: 0;
+    transform: translateY(10px); 
+    animation: smoothFadeIn 0.6s cubic-bezier(0.1, 1, 0.1, 1) forwards;
+}
+
+@keyframes smoothFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* AVAILABILITY OVERLAY BADGES */
+.status-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    z-index: 5;
+}
+
+.instock { background-color: #10b981; }
+.sold { background-color: #ef4444; }
+
+/* ADDRESS DIRECTIVE LINKING STYLES */
+.map-address-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    transition: color 0.3s;
+}
+
+.map-address-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* CINEMATIC MODAL SCREEN MAXIMIZER */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: white; font-size: 2.5rem; cursor: pointer;
+}
+
+/* MARKETING VIDEOS LAYOUT MODULES */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.video-card {
+    background-color: var(--light);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.video-box {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.video-info {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* LEADERSHIP CARD DECK PANEL */
+.ceo-section {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 5%;
+}
+
+.ceo-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.ceo-card h3 { margin-bottom: 1rem; color: #60a5fa; }
+
+/* FOOTER STYLING CONFIGURATION */
+footer {
+    background-color: var(--primary);
+    color: white;
+    padding: 3rem 5% 1.5rem 5%;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 2rem;
+}
+
+.social-indicators h4 { margin-bottom: 1rem; color: #94a3b8; }
+.social-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.social-icon {
+    width: 45px; height: 45px;
+    background-color: #1e293b; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    color: white; text-decoration: none; font-size: 1.3rem;
+    transition: all 0.3s;
+}
+
+.social-icon:hover { transform: translateY(-3px); }
+.icon-wa:hover { background-color: #25d366; }
+.icon-ig:hover { background-color: #e1306c; }
+.icon-fb:hover { background-color: #1877f2; }
+.icon-tk:hover { background-color: #000000; }
+.icon-call:hover { background-color: #10b981; }
+.icon-msg:hover { background-color: #3b82f6; }
+
+.footer-legal p { font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem; }
+.footer-bottom { text-align: center; font-size: 0.85rem; color: #64748b; }
+
+/* ==========================================================================
+   MOBILE BREAKPOINTS & RESPONSIVE ADAPTATIONS
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .main-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 4%;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    header { padding: 0.75rem 4%; }
+    .logo-area { gap: 0.6rem; }
+    .logo-container { width: 40px; height: 40px; }
+    .brand-text h1 { font-size: 1.15rem; letter-spacing: 0.5px; }
+    .datetime-display { font-size: 0.7rem; }
+    .hamburger span { width: 26px; height: 2.5px; }
+    .nav-menu { width: 85%; padding: 6rem 1.5rem 1.5rem 1.5rem; }
+    .hero { margin-top: 60px; height: 30vh; }
+    .hero h2 { font-size: 1.8rem; }
+    .hero p { font-size: 0.9rem; }
+    .column { padding: 1rem; border-radius: 8px; }
+    .column h3 { font-size: 1.15rem; margin-bottom: 1rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+    .lightbox img { max-width: 95%; max-height: 70vh; }
+    .lightbox-close { top: 15px; right: 20px; font-size: 2rem; }
+    .ceo-card { padding: 1.5rem 1rem; }
+    .ceo-card h3 { font-size: 1.25rem; }
+}
+
+@media (max-width: 360px) {
+    .brand-text h1 { font-size: 1rem; }
+    .gallery-grid { grid-template-columns: 1fr; }
+}

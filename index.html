@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>House of Snow Drop | Premium Ankara Couture</title>
+    <!-- FIX: Corrected FontAwesome Library Link for Brand & Social Logos -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- Link to External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- GLOBAL HEADER & NAVIGATION -->
+    <header>
+        <div class="logo-area">
+            <!-- Your Continuous Alternating Infinite Spinning Logo -->
+            <div class="logo-container">
+                <img src="images/logo.jpeg" alt="House of Snow Drop Logo" class="spinning-logo" id="clickable-logo"
+                    style="cursor: pointer;">
+            </div>
+
+            <div class="brand-text">
+                <h1>House of Snow Drop</h1>
+                <div class="datetime-display" id="live-datetime">Loading Date & Time...</div>
+            </div>
+        </div>
+
+        <!-- Hamburger Menu Trigger -->
+        <div class="hamburger" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Sliding Navigation Pane -->
+        <nav class="nav-menu" id="nav-links">
+            <a href="#hero" class="nav-item">Home</a>
+            <a href="#gallery-col" class="nav-item">Design Gallery</a>
+            <a href="#videos-col" class="nav-item">Social Media Adverts</a>
+            <a href="#articles-col" class="nav-item">Fashion Articles</a>
+            <a href="#ceo-desk" class="nav-item">CEO's Table Email</a>
+            <a href="#contact-footer" class="nav-item">Contact & Socials</a>
+        </nav>
+    </header>
+
+    <!-- HERO WELCOME SECTION -->
+    <section class="hero" id="hero">
+        <h2>Culture Meets Couture</h2>
+        <p>Premium Bespoke & Contemporary Ankara Designs</p>
+    </section>
+
+    <!-- CORE 3-COLUMN LAYOUT CONTEXT -->
+    <main class="main-container">
+
+        <!-- COLUMN 1: FUTURE FASHION ARTICLES -->
+        <section class="column" id="articles-col">
+            <h3><i class="fa-feather-pointed fa-solid"></i> Fashion Articles</h3>
+            <div class="article-container">
+                <div class="article-placeholder">
+                    <h4>The Evolution of Ankara Streetwear</h4>
+                    <p>Coming Soon. An in-depth look at how traditional geometric prints are reclaiming global runways.</p>
+                </div>
+                <div class="article-placeholder">
+                    <h4>Styling Bold Prints with Premium Solids</h4>
+                    <p>Coming Soon. Tips and tricks on blending textured line patterns effortlessly into everyday corporate wear.</p>
+                </div>
+                <div class="article-placeholder">
+                    <h4>Behind the Snow Drop Motif</h4>
+                    <p>Coming Soon. Discovering the symbolism of our signature minimalist flower logo woven into our textiles.</p>
+                </div>
+            </div>
+        </section>
+
+<!-- REPLACE COLUMN 2 IN INDEX.HTML WITH THIS INITIALIZED CARD FRAME -->
+<section class="column" id="gallery-col" style="position: relative; overflow: hidden; min-height: 470px; padding: 0; border-radius: 12px; display: flex; flex-direction: column;">
+    
+    <!-- Initialized Dynamic Shuffled Background Image Layer -->
+    <div id="gallery-bg-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://unsplash.com'); background-position: center; background-size: cover; background-repeat: no-repeat; transition: background-image 1.5s ease-in-out; z-index: 1;"></div>
+    
+    <!-- FULLY CLICKABLE INVISIBLE CARD HITBOX COVER -->
+    <div id="gallery-bg-hitbox" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; cursor: pointer;" title="Click to maximize current design photo"></div>
+    
+    <!-- High-Contrast Content Overlay Layer -->
+    <div style="position: relative; z-index: 3; background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.85)); padding: 2rem 1.5rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; color: white; height: 100%; pointer-events: none;">
+        
+        <div style="text-align: center; margin-top: 1rem;">
+            <h3 style="color: white; border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; display: inline-flex; justify-content: center; align-items: center; gap: 0.5rem; width: 100%; font-size: 1.4rem; margin-bottom: 1.5rem;">
+                <i class="fa-images fa-solid"></i> Design Gallery
+            </h3>
+            <p style="font-weight: 500; font-size: 1rem; line-height: 1.6; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); margin-bottom: 2rem;">
+                Explore our full collections of Ankara streetwear, tailored trousers, and custom sets with real-time stock markers.
+            </p>
+        </div>
+
+        <div style="text-align: center; width: 100%; margin-bottom: 1rem; pointer-events: auto;">
+            <a href="gallery.html" class="ceo-btn" style="display: block; margin: 0.6rem 0; width: 100%; background: var(--accent); box-shadow: 0 4px 6px rgba(0,0,0,0.3);">✨ View Master Catalog (All Items)</a>
+            <a href="instock.html" class="ceo-btn" style="display: block; margin: 0.6rem 0; width: 100%; background: #10b981; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">🟢 Browse Available Items</a>
+            <a href="soldout.html" class="ceo-btn" style="display: block; margin: 0.6rem 0; width: 100%; background: #ef4444; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">🔴 Browse Sold Out Archive</a>
+        </div>
+    </div>
+</section>
+
+ 
+        <!-- COLUMN 3: SOCIAL MEDIA VIDEO CAMPAIGNS -->
+        <section class="column" id="videos-col">
+            <h3><i class="fa-clapperboard fa-solid"></i> Video Collections</h3>
+            <div class="video-container">
+                <div class="video-card">
+                    <div class="video-box">
+                        <iframe width="100%" height="100%" src="" frameborder="0" allowfullscreen style="background:#000;"></iframe>
+                    </div>
+                    <div class="video-info">Official Launch Campaign – Scene 1 & 2</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-box">
+                        <i class="fa-play fa-solid" style="font-size: 2rem; color: #64748b;"></i>
+                    </div>
+                    <div class="video-info">Instagram Showcase Reel: Baggy Pleated Trousers</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-box">
+                        <i class="fa-play fa-solid" style="font-size: 2rem; color: #64748b;"></i>
+                    </div>
+                    <div class="video-info">TikTok Behind-the-Scenes: Custom Fabric Stacking</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SECURE CEO CORRESPONDENCE -->
+    <section class="ceo-section" id="ceo-desk">
+        <div class="ceo-card">
+            <h3>From the CEO's Desk</h3>
+            <p>Have an inquiry, custom design request, or partnership proposal? Reach out directly to the leadership table via secure correspondence.</p>
+            <a href="mailto:ceo@houseofsnowdrop.com" class="ceo-btn">Send Secure Email</a>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL MAXIMIZER FRAME -->
+    <div class="lightbox" id="lightbox-modal">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Maximized Selection">
+    </div>
+
+    <!-- FIX: FULLY RESTORED FOOTER & REGISTRATION MODULE -->
+    <footer id="contact-footer">
+        <div class="footer-content">
+            <div class="social-indicators">
+                <h4>Connect With Our Channels</h4>
+                <div class="social-grid">
+                    <a href="https://wa.me" class="icon-wa social-icon" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://instagram.com" class="icon-ig social-icon" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com" class="icon-fb social-icon" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://tiktok.com" class="icon-tk social-icon" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="tel:+2348159296162" class="icon-call social-icon"><i class="fa-phone fa-solid"></i></a>
+                    <a href="sms:+2348142074866" class="icon-msg social-icon"><i class="fa-comment-sms fa-solid"></i></a>
+                </div>
+            </div>
+
+<div class="footer-legal">
+                <h4>Our Physical Maison & Legal</h4>
+                <p><strong>Maison Address:</strong> Madojutimi Junction, Abiola way, Abeokuta, Ogun State, Nigeria</p>
+                <a href="https://google.com" 
+                   target="_blank" 
+                   class="map-address-link">
+                    <i class="fa-map-location-dot fa-solid"></i> Get Live Driving Directions to Store
+                </a>
+                <p style="margin-top: 1rem;"><strong>CAC Registration Number:</strong> RC-XXXXXXXX (Corporate Affairs Commission, Nigeria)</p>
+                <p><strong>Disclaimer:</strong> All custom garments, Ankara blends, and fabric panels showcased on this platform are exclusive designs of House of Snow Drop.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 House of Snow Drop. All Rights Reserved. Tailored with Pride in Nigeria.</p>
+        </div>
+    </footer>
+
+    <!-- Modular link to your external JavaScript file -->
+
+ <script>
+        // A clean, simple list of raw background clothing image paths
+        var backgroundImages = [
+            'images/image1.jpeg', 'images/image2.jpeg', 'images/image3.jpeg', 'images/image4.jpeg',
+            'images/image5.jpeg', 'images/image6.jpeg', 'images/image7.jpeg', 'images/image8.jpeg',
+            'images/image9.jpeg', 'images/image10.jpeg', 'images/image11.jpeg', 'images/image12.jpeg',
+            'images/image13.jpeg', 'images/image14.jpeg', 'images/image15.jpeg', 'images/image16.jpeg',
+            'images/image17.jpeg', 'images/image18.jpeg', 'images/image19.jpeg', 'images/image20.jpeg',
+            'images/image21.jpeg', 'images/image22.jpeg', 'images/image23.jpeg', 'images/image24.jpeg',
+            'images/image25.jpeg', 'images/image26.jpeg', 'images/image27.jpeg', 'images/image28.jpeg',
+            'images/image29.jpeg', 'images/image30.jpeg', 'images/image31.jpeg', 'images/image32.jpeg',
+            'images/image33.jpeg', 'images/image34.jpeg', 'images/image35.jpeg', 'images/image36.jpeg'
+        ];
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
