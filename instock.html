@@ -93,25 +93,25 @@
             const shuffledItems = shuffle([...availableDesigns]);
 
             // Fixed parameters: included 'index' to handle the staggered animation loop delays cleanly
-            shuffledItems.forEach((item, index) => {
-                const card = document.createElement('div');
-                card.className = 'gallery-item';
-                
-                // Sets the smooth fade delay dynamically
-                card.style.animationDelay = `${index * 0.1}s`;
+shuffledItems.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'gallery-item';
+    card.style.animationDelay = `${index * 0.1}s`;
 
-                card.innerHTML = `
-                    <img src="${item.src}" alt="In Stock Wear">
-                    <span class="instock status-badge">In Stock</span>
-                    <div style="position: absolute; top: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 2px 6px; font-size: 0.75rem; border-radius: 4px; font-weight: bold; z-index:10;">Ref: ${item.id}</div>
-                `;
-                
-                card.addEventListener('click', () => {
-                    document.getElementById('lightbox-img').src = item.src;
-                    document.getElementById('lightbox-modal').style.display = 'flex';
-                });
-                container.appendChild(card);
-            });
+    // REWRITTEN: Clean portfolio design view showing ONLY the reference code string
+    card.innerHTML = `
+        <img src="${item.src}" alt="Ankara Design">
+        <div style="position: absolute; top: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 2px 6px; font-size: 0.75rem; border-radius: 4px; font-weight: bold; z-index:10;">
+            Ref: ${item.id}
+        </div>
+    `;
+    
+    card.addEventListener('click', () => {
+        document.getElementById('lightbox-img').src = item.src;
+        document.getElementById('lightbox-modal').style.display = 'flex';
+    });
+    container.appendChild(card);
+});
 
             // Logo and modal click triggers
             const brandLogo = document.getElementById('clickable-logo');

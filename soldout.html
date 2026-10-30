@@ -92,26 +92,25 @@
             const shuffledItems = shuffle([...archivedDesigns]);
 
             // FIXED PARAMETER: Added 'index' into the array mapping function argument list
-            shuffledItems.forEach((item, index) => {
-                const card = document.createElement('div');
-                card.className = 'gallery-item';
+ shuffledItems.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'gallery-item';
+    card.style.animationDelay = `${index * 0.1}s`;
 
-                // Safely configures the dynamic item fade delay sequentially
-                card.style.animationDelay = `${index * 0.1}s`;
-
-                card.innerHTML = `
-                    <img src="${item.src}" alt="Archived Creation">
-                    <span class="sold status-badge">Sold Out</span>
-                    <div style="position: absolute; top: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 2px 6px; font-size: 0.75rem; border-radius: 4px; font-weight: bold; z-index:10;">Ref: ${item.id}</div>
-                `;
-                
-                card.addEventListener('click', () => {
-                    document.getElementById('lightbox-img').src = item.src;
-                    document.getElementById('lightbox-modal').style.display = 'flex';
-                });
-                container.appendChild(card);
-            });
-
+    // REWRITTEN: Clean portfolio archive view showing ONLY the unique reference number
+    card.innerHTML = `
+        <img src="${item.src}" alt="Archived Design Look">
+        <div style="position: absolute; top: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 2px 6px; font-size: 0.75rem; border-radius: 4px; font-weight: bold; z-index:10;">
+            Ref: ${item.id}
+        </div>
+    `;
+    
+    card.addEventListener('click', () => {
+        document.getElementById('lightbox-img').src = item.src;
+        document.getElementById('lightbox-modal').style.display = 'flex';
+    });
+    container.appendChild(card);
+});
             // Logo lightbox click engine integrations
             const brandLogo = document.getElementById('clickable-logo');
             if (brandLogo) { brandLogo.addEventListener('click', () => { document.getElementById('lightbox-img').src = brandLogo.src; document.getElementById('lightbox-modal').style.display = 'flex'; }); }

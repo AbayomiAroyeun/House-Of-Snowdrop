@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
@@ -7,20 +8,22 @@
     <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- GLOBAL FIXED NAVBAR -->
     <header>
         <div class="logo-area">
             <div class="logo-container">
-                <img src="images/logo.jpeg" alt="House of Snow Drop Logo" class="spinning-logo" id="clickable-logo" style="cursor: pointer;">
+                <img src="images/logo.jpeg" alt="House of Snow Drop Logo" class="spinning-logo" id="clickable-logo"
+                    style="cursor: pointer;">
             </div>
             <div class="brand-text">
                 <h1>House of Snow Drop</h1>
                 <div class="datetime-display" id="gallery-datetime">Loading Date & Time...</div>
             </div>
         </div>
-        
+
         <div class="hamburger" id="menu-toggle">
             <span></span><span></span><span></span>
         </div>
@@ -44,7 +47,8 @@
 
     <main style="max-width: 1400px; margin: 2rem auto; padding: 0 5%;">
         <div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="instock.html" class="ceo-btn" style="margin-top:0; background:#10b981;">🟢 Browse Available Stock</a>
+            <a href="instock.html" class="ceo-btn" style="margin-top:0; background:#10b981;">🟢 Browse Available
+                Stock</a>
             <a href="soldout.html" class="ceo-btn" style="margin-top:0; background:#ef4444;">🔴 Browse Vault Archive</a>
         </div>
 
@@ -57,7 +61,7 @@
     </div>
 
     <script>
-       const galleryInventory = [
+        const galleryInventory = [
             { id: "HSD-001", src: 'images/image1.jpeg', status: 'In Stock' },
             { id: "HSD-002", src: 'images/image2.jpeg', status: 'Sold Out' },
             { id: "HSD-003", src: 'images/image3.jpeg', status: 'In Stock' },
@@ -124,16 +128,17 @@
             shuffledItems.forEach((item, index) => {
                 const card = document.createElement('div');
                 card.className = 'gallery-item';
-                
-                // Creates a slight staggered delay for each item's fade animation
+
+                // Keeps the smooth sequential fade layout trigger delay intact
                 card.style.animationDelay = `${index * 0.1}s`;
-                
-                const badgeClass = item.status === 'In Stock' ? 'instock' : 'sold';
+
+                // REWRITTEN: Stamped with ONLY the reference identification label overlay
                 card.innerHTML = `
-                    <img src="${item.src}" alt="Ankara Attire">
-                    <span class="${badgeClass} status-badge">${item.status}</span>
-                    <div style="position: absolute; top: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 2px 6px; font-size: 0.75rem; border-radius: 4px; font-weight: bold; z-index:10;">Ref: ${item.id}</div>
-                `;
+        <img src="${item.src}" alt="Ankara Design Architecture">
+        <div style="position: absolute; top: 5px; left: 5px; background: rgba(0,0,0,0.7); color: white; padding: 2px 6px; font-size: 0.75rem; border-radius: 4px; font-weight: bold; z-index:10;">
+            Ref: ${item.id}
+        </div>
+    `;
                 card.addEventListener('click', () => {
                     document.getElementById('lightbox-img').src = item.src;
                     document.getElementById('lightbox-modal').style.display = 'flex';
@@ -155,17 +160,5 @@
         });
     </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
- 
