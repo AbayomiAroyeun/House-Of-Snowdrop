@@ -147,6 +147,7 @@
     </div>
 
     <!-- FIX: FULLY RESTORED FOOTER & REGISTRATION MODULE -->
+        <!-- REPLACE EVERYTHING FROM THE START OF THE FOOTER TO THE END OF THE FILE -->
     <footer id="contact-footer">
         <div class="footer-content">
             <div class="social-indicators">
@@ -161,7 +162,7 @@
                 </div>
             </div>
 
-<div class="footer-legal">
+            <div class="footer-legal">
                 <h4>Our Physical Maison & Legal</h4>
                 <p><strong>Maison Address:</strong> Madojutimi Junction, Abiola way, Abeokuta, Ogun State, Nigeria</p>
                 <a href="https://google.com" 
@@ -179,10 +180,9 @@
         </div>
     </footer>
 
-    <!-- Modular link to your external JavaScript file -->
-
- <script>
-        // A clean, simple list of raw background clothing image paths
+    <!-- INLINE CROSSFADE AUTOMATION ARRAY AND ENGINE -->
+   
+    <script>
         var backgroundImages = [
             'images/image1.jpeg', 'images/image2.jpeg', 'images/image3.jpeg', 'images/image4.jpeg',
             'images/image5.jpeg', 'images/image6.jpeg', 'images/image7.jpeg', 'images/image8.jpeg',
@@ -194,8 +194,61 @@
             'images/image29.jpeg', 'images/image30.jpeg', 'images/image31.jpeg', 'images/image32.jpeg',
             'images/image33.jpeg', 'images/image34.jpeg', 'images/image35.jpeg', 'images/image36.jpeg'
         ];
-    </script>
 
+        var lastIndex = -1;
+
+        function rotateCardBackground() {
+            var bgLayer = document.getElementById('gallery-bg-layer');
+            if (!bgLayer || !backgroundImages.length) return;
+
+            var randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * backgroundImages.length);
+            } while (randomIndex === lastIndex && backgroundImages.length > 1);
+
+            lastIndex = randomIndex;
+            bgLayer.style.backgroundImage = "url(" + backgroundImages[randomIndex] + ")";
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Fire the image background rotation engine
+            rotateCardBackground();
+            setInterval(rotateCardBackground, 4000);
+
+            // 2. FIXED HOMEPAGE MENU MECHANICS: Absolute internal toggle listener
+            var menuToggle = document.getElementById('menu-toggle');
+            var navLinks = document.getElementById('nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+
+                // Auto-collapse navigation panel after single target choice selection clicks
+                document.querySelectorAll('.nav-item').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+
+            // 3. Click-to-maximize card background hitbox action launcher
+            var cardHitbox = document.getElementById('gallery-bg-hitbox');
+            if (cardHitbox) {
+                cardHitbox.addEventListener('click', function() {
+                    var bgLayer = document.getElementById('gallery-bg-layer');
+                    if (bgLayer && bgLayer.style.backgroundImage) {
+                        var cleanUrl = bgLayer.style.backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+                        if (typeof openLightbox === 'function') {
+                            openLightbox(cleanUrl);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- Link to your external script sheet asset file -->
     <script src="script.js"></script>
 </body>
 </html>
