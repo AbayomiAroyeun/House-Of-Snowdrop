@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Master Catalog | House of Snowdrop</title>
+    <!-- FontAwesome Library Link for Brand & Social Logos -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- Link to External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-header {
+            margin-top: 90px;
+            text-align: center;
+            padding: 2rem 5%;
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .gallery-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-family: serif;
+        }
+
+        .catalog-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 5%;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media screen and (max-width: 480px) {
+            .grid-layout {
+                grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+                gap: 0.75rem;
+            }
+        }
+
+        .ref-overlay-tag {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #ffffff;
+            padding: 3px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- GLOBAL FIXED NAVBAR -->
+    <header>
+        <div class="logo-area">
+            <div class="logo-container">
+                <img src="images/logo.jpeg" alt="House of Snowdrop Logo" class="spinning-logo" id="clickable-logo"
+                    style="cursor: pointer;">
+            </div>
+            <div class="brand-text">
+                <h1>House of Snowdrop</h1>
+                <div class="datetime-display" id="live-datetime">Loading Date & Time...</div>
+            </div>
+        </div>
+
+        <div class="hamburger" id="menu-toggle">
+            <span></span><span></span><span></span>
+        </div>
+
+        <nav class="nav-menu" id="nav-links">
+            <a href="index.html" class="nav-item">Home Hub</a>
+            <a href="gallery.html" class="nav-item">All Designs</a>
+            <a href="instock.html" class="nav-item">In Stock Only</a>
+            <a href="soldout.html" class="nav-item">Sold Out Archive</a>
+            <a href="index.html#videos-col" class="nav-item">Social Adverts</a>
+            <a href="index.html#ceo-desk" class="nav-item">CEO's Desk</a>
+            <a href="index.html#contact-footer" class="nav-item">Find Our Store</a>
+        </nav>
+    </header>
+
+    <!-- BANNER HERO TITLE AREA (Distortion text removed) -->
+    <section class="gallery-header">
+        <h2>The Master Collection</h2>
+    </section>
+
+    <!-- MAIN RANDOMIZED LOOKBOOK GRID -->
+    <main class="catalog-container">
+        <!-- Action navigation controls cleanly matching preferred updates -->
+        <div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <a href="gallery.html" class="ceo-btn" style="margin-top:0; background: var(--accent); color:#fff; padding: 0.8rem 2rem; text-decoration:none; font-weight:bold; border-radius:4px;">✨ shop now</a>
+            <a href="instock.html" class="ceo-btn" style="margin-top:0; background: #10b981; color:#fff; padding: 0.8rem 2rem; text-decoration:none; font-weight:bold; border-radius:4px;">🟢 View delivered orders</a>
+            <a href="soldout.html" class="ceo-btn" style="margin-top:0; background: #ef4444; color:#fff; padding: 0.8rem 2rem; text-decoration:none; font-weight:bold; border-radius:4px;">🔴 See our Models</a>
+        </div>
+
+        <div class="grid-layout" id="master-grid-target"></div>
+    </main>
+
+    <!-- LIGHTBOX SYSTEM -->
+    <div class="lightbox" id="lightbox-modal">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Maximized View">
+    </div>
+
+    <!-- 1. LINK THE DYNAMIC CENTRAL DATA SOURCE SHEET -->
+    <script src="products.js"></script>
+
+    <!-- 2. SHUFFLE LOGIC ENGINE CODE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            /* CLOCK TIMING TICKER */
+            const timeBox = document.getElementById('live-datetime');
+            const updateTime = () => {
+                timeBox.textContent = new Date().toLocaleDateString('en-US', {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
+                });
+            };
+            setInterval(updateTime, 1000); updateTime();
+
+            /* SLIDING NAVIGATION DRAWER MOBILE PANEL HOOK */
+            document.getElementById('menu-toggle').addEventListener('click', () => {
+                document.getElementById('nav-links').classList.toggle('active');
+            });
+
+            /* Knuth-Fisher-Yates Array Randomization Shuffler Engine */
+            function shuffleCollection(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            /* RENDER MASTER GRID */
+            const gridTarget = document.getElementById('master-grid-target');
+            
+            if (typeof galleryInventory !== 'undefined' && galleryInventory.length > 0) {
+                // Creates a clean, separate, shuffled instance of your master inventory list
+                const randomizedInventory = shuffleCollection([...galleryInventory]);
+
+                randomizedInventory.forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'gallery-item';
+                    card.style.animationDelay = `${index * 0.05}s`;
+                    card.style.position = 'relative';
+
+                    // Renders the specific badge style color matching item database status
+                    const statusClass = item.status === 'In Stock' ? 'instock' : 'sold';
+
+                    card.innerHTML = `
+                        <div class="ref-overlay-tag">Ref: ${item.id}</div>
+                        <img src="${item.src}" alt="Master Catalog Item">
+                        <div class="${statusClass} status-badge">${item.status}</div>
+                    `;
+
+                    // Zoom event handler
+                    card.addEventListener('click', () => {
+                        document.getElementById('lightbox-img').src = item.src;
+                        document.getElementById('lightbox-modal').style.display = 'flex';
+                    });
+
+                    gridTarget.appendChild(card);
+                });
+            } else {
+                gridTarget.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #64748b;">No designs found. Ensure your products.js layout file is loaded.</p>`;
+            }
+
+            /* UNIVERSAL LIGHTBOX CLOSURES CONTROLLERS */
+            const brandLogo = document.getElementById('clickable-logo');
+            if (brandLogo) {
+                brandLogo.addEventListener('click', () => {
+                    document.getElementById('lightbox-img').src = brandLogo.src;
+                    document.getElementById('lightbox-modal').style.display = 'flex';
+                });
+            }
+
+            document.getElementById('lightbox-close').addEventListener('click', () => { 
+                document.getElementById('lightbox-modal').style.display = 'none'; 
+            });
+            document.getElementById('lightbox-modal').addEventListener('click', (e) => { 
+                if (e.target === document.getElementById('lightbox-modal')) {
+                    document.getElementById('lightbox-modal').style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+

@@ -4,11 +4,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>House of Snowdrop | Premium Ankara & Adire & Adire & Adire Couture</title>
-    <!-- FIX: Corrected FontAwesome Library Link for Brand & Social Logos -->
+    <title>House of Snowdrop | Premium Ankara & Adire Couture</title>
+    <!-- FontAwesome Library Link for Brand & Social Logos -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <!-- Link to External Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* PRIORITY RENDERING FOR MOBILE SMARTPHONE SCREENS */
+        @media screen and (max-width: 768px) {
+            .hero-carousel-viewport {
+                height: 38vh !important;
+                /* Immediately visible above phone fold area */
+            }
+
+            .main-container {
+                padding-top: 0.5rem !important;
+                margin-top: 0 !important;
+            }
+
+            #gallery-col {
+                min-height: auto !important;
+                margin-bottom: 1.5rem !important;
+            }
+        }
+
+        /* NATIVE TOUCH SWIPE LOOKBOOK INTERFACE */
+        .hero-carousel-viewport {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            overflow: hidden;
+            margin-top: 70px;
+            background-color: #000;
+        }
+
+        .hero-carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .hero-carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hero-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: start;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        /* 🆕 WATERMARK STYLE HERO CAPTION REFINEMENT */
+        .carousel-overlay h2 {
+            color: #ffffff;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            /* Spreads letters out like an artistic watermark imprint */
+            font-weight: 300;
+            /* Beautiful thin presentation stroke weight */
+            opacity: 0.25;
+            /* Ghost translucent wash effect */
+            text-align: center;
+            font-family: serif;
+            margin: 0;
+            padding: 0 1rem;
+            user-select: none;
+        }
+
+        /* SMOOTH CROSS-FADE LAYER ANIMATION */
+        .gallery-fade-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .gallery-fade-layer.visible {
+            opacity: 1;
+        }
+
+        /* 🆕 MINIMIZED AND SCALED DOWN DESIGN GALLERY HEADER */
+        #gallery-col h3 {
+            color: #ffffff !important;
+            font-size: 1.15rem !important;
+            /* Compact refined scale dimensions */
+            font-weight: 400 !important;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+            /* Slim low-contrast boundary line */
+            padding-bottom: 0.4rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            width: 80%;
+            margin: 0.5rem auto 1.5rem auto;
+            text-transform: uppercase;
+        }
+
+        /* 🆕 ELEGANT LIGHT-APPEARANCE SEAMLESS TEXT ACTION LINKS */
+        .transparent-btn {
+            display: block;
+            margin: 0.5rem 0;
+            width: 100%;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.95rem;
+            /* Scaled down text size to look highly professional */
+            font-weight: 400;
+            /* Soft light font stroke thickness */
+            text-decoration: none;
+            text-align: center;
+            border-radius: 6px;
+            background: transparent !important;
+            border: none !important;
+            color: #e2e8f0;
+            /* Off-white light tint tone */
+            letter-spacing: 0.5px;
+            /* Subtle protective shadow so text remains visible over light imagery patterns */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+
+        .btn-shop:hover {
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .btn-delivered:hover {
+            color: #10b981;
+            transform: translateY(-1px);
+        }
+
+        .btn-models:hover {
+            color: #ef4444;
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 
 <body>
@@ -16,7 +180,6 @@
     <!-- GLOBAL HEADER & NAVIGATION -->
     <header>
         <div class="logo-area">
-            <!-- Your Continuous Alternating Infinite Spinning Logo -->
             <div class="logo-container">
                 <img src="images/logo.jpeg" alt="House of Snowdrop Logo" class="spinning-logo" id="clickable-logo"
                     style="cursor: pointer;">
@@ -28,7 +191,6 @@
             </div>
         </div>
 
-        <!-- Hamburger Menu Trigger -->
         <div class="hamburger" id="menu-toggle">
             <span></span>
             <span></span>
@@ -36,116 +198,128 @@
         </div>
 
         <!-- Sliding Navigation Pane -->
+        <!-- Sliding Navigation Pane -->
         <nav class="nav-menu" id="nav-links">
-            <a href="#hero" class="nav-item">Home</a>
-            <a href="#gallery-col" class="nav-item">Design Gallery</a>
-            <a href="#videos-col" class="nav-item">Social Media Adverts</a>
-            <a href="#articles-col" class="nav-item">Fashion Articles</a>
-            <a href="#ceo-desk" class="nav-item">CEO's Table Email</a>
-            <a href="#contact-footer" class="nav-item">Contact & Socials</a>
+            <a href="index.html" class="nav-item">Home</a>
+            <!--  LINK IDENTITY SYNC: Maps to the same lookbook file for consistent cascading layout effects -->
+            <a href="gallery.html" class="nav-item">All Designs</a>
+            <a href="index.html#videos-col" class="nav-item">Social Adverts</a>
+            <a href="index.html#articles-col" class="nav-item">Fashion Articles</a>
+            <a href="index.html#ceo-desk" class="nav-item">CEO's Desk</a>
+            <a href="index.html#contact-footer" class="nav-item">Find Our Store</a>
         </nav>
+
+
     </header>
 
-    <!-- HERO WELCOME SECTION -->
-    <section class="hero" id="hero">
-        <h2>Culture Meets Couture</h2>
-        <p>Premium Bespoke & Contemporary Ankara & Adire & Adire & Adire & Adire Designs</p>
+    <!-- SWIPE LEFT HERO CAROUSEL SECTION -->
+    <section class="hero-carousel-viewport" id="hero">
+        <div class="hero-carousel-track" id="hero-swipe-track">
+            <!-- Populated via JavaScript hero inventory dataset in Part 2 -->
+        </div>
+        <div class="carousel-overlay">
+            <h2>Culture meets couture</h2>
+        </div>
     </section>
 
-    <!-- CORE 3-COLUMN LAYOUT CONTEXT (UPDATED REARRANGED ORDER) -->
+    <!-- CORE Layout Columns -->
     <main class="main-container">
 
-        <!-- NEW COLUMN 1: DESIGN GALLERY COLLECTION HUBS (VISITORS SEE THIS FIRST NOW!) -->
+        <!-- COLUMN 1: DESIGN GALLERY SECTION WITH SMOOTH CROSS-FADE ANIMATION LINKS -->
         <section class="column" id="gallery-col"
             style="position: relative; overflow: hidden; min-height: 470px; padding: 0; border-radius: 12px; display: flex; flex-direction: column;">
 
-            <!-- Dynamic Shuffled Background Image Layer -->
-            <div id="gallery-bg-layer"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-position: center; background-size: cover; background-repeat: no-repeat; transition: background-image 1.5s ease-in-out; z-index: 1;">
-            </div>
+            <!-- Dual layers to preserve seamless cross-fade visual animations -->
+            <div id="gallery-bg-layer-1" class="gallery-fade-layer visible"></div>
+            <div id="gallery-bg-layer-2" class="gallery-fade-layer"></div>
 
-            <!-- FULLY CLICKABLE INVISIBLE CARD HITBOX COVER -->
+            <!-- CLICKABLE INVISIBLE HITBOX COVER -->
             <div id="gallery-bg-hitbox"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; cursor: pointer;"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; cursor: pointer;"
                 title="Click to maximize current design photo"></div>
 
             <!-- High-Contrast Content Overlay Layer -->
             <div
-                style="position: relative; z-index: 3; background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.85)); padding: 2rem 1.5rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; color: white; height: 100%; pointer-events: none;">
+                style="position: relative; z-index: 4; background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.75)); padding: 2rem 1.5rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; color: white; height: 100%; pointer-events: none;">
 
-                <div style="text-align: center; margin-top: 1rem;">
-                    <h3
-                        style="color: white; border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; display: inline-flex; justify-content: center; align-items: center; gap: 0.5rem; width: 100%; font-size: 1.4rem; margin-bottom: 1.5rem;">
-                        <i class="fa-images fa-solid"></i> Design Gallery
-                    </h3>
-                    <p
-                        style="font-weight: 500; font-size: 1rem; line-height: 1.6; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); margin-bottom: 2rem;">
-                        Explore our full collections of Ankara & Adire & Adire streetwear, tailored trousers, and custom sets with
-                        real-time stock markers.
-                    </p>
+                <div style="text-align: center; margin-top: 0.5rem;">
+                    <!-- Sits seamlessly centered with compact proportions -->
+                    <h3><i class="fa-images fa-solid"></i> Design Gallery</h3>
                 </div>
 
+
+                <!-- Outline Button Configurations with direct links and search lens icon -->
                 <div style="text-align: center; width: 100%; margin-bottom: 1rem; pointer-events: auto;">
-                    <a href="gallery.html" class="ceo-btn"
-                        style="display: block; margin: 0.6rem 0; width: 100%; background: var(--accent); box-shadow: 0 4px 6px rgba(0,0,0,0.3);">✨
-                        View Master Catalog (All Items)</a>
-                    <a href="instock.html" class="ceo-btn"
-                        style="display: block; margin: 0.6rem 0; width: 100%; background: #10b981; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">🟢
-                        Browse Available Items</a>
-                    <a href="soldout.html" class="ceo-btn"
-                        style="display: block; margin: 0.6rem 0; width: 100%; background: #ef4444; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">🔴
-                        Browse Sold Out Archive</a>
+                    <!-- shop now goes to the Master Catalog grid -->
+                    <a href="gallery.html" class="btn-shop transparent-btn">🔍 shop now</a>
+                    
+                    <!-- View delivered orders goes to soldout.html (Customer Photos) -->
+                    <a href="soldout.html" class="btn-delivered transparent-btn"> View delivered orders</a>
+                    
+                    <!-- See our Models goes to instock.html (Mannequin / Ready Stock) -->
+                    <a href="instock.html" class="btn-models transparent-btn"> See our Models</a>
                 </div>
+
+
+
             </div>
         </section>
 
-<div class="video-card">
-    <!-- YOUR_YOUTUBE_VIDEO_ID_HERE with your exact YouTube video ID code string -->
-    <a href="https://youtu.be/jWkjAyBn8CI" target="_blank" style="text-decoration: none;">
-        
-        <!-- Interactive presentation play card frame container -->
-        <div class="video-box" style="cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: #0f172a;">
-            <i class="fa-play fa-solid" style="font-size: 2.5rem; color: #cbd5e1; transition: color 0.3s;"></i>
-            <span style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">CLICK TO Play Trailer</span>
-        </div>
-        
-    </a>
-    <div class="video-info">Official Launch Campaign – Scene 1 & 2</div>
-</div>
 
-
-                <!-- CARD 2: INSTAGRAM SHOWCASE REEL -->
+        <!-- COLUMN 2: SOCIAL MEDIA ADVERTS SECTION -->
+        <section class="column" id="videos-col">
+            <h3><i class="fa-play fa-solid"></i> Social Media Adverts</h3>
+            <div class="video-container">
                 <div class="video-card">
-                    <!-- Clickable block linking straight out to your Instagram post target -->
+                    <a href="https://youtu.be" target="_blank" style="text-decoration: none;">
+                        <div class="video-box"
+                            style="cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: #0f172a;">
+                            <i class="fa-play fa-solid"
+                                style="font-size: 2.5rem; color: #cbd5e1; transition: color 0.3s;"></i>
+                            <span
+                                style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">CLICK
+                                TO Play Trailer</span>
+                        </div>
+                    </a>
+                    <div class="video-info">Official Launch Campaign – Scene 1 & 2</div>
+                </div>
+
+                <div class="video-card">
                     <a href="https://instagram.com" target="_blank" style="text-decoration: none;">
-                        <div class="video-box" style="cursor: pointer;">
-                            <i class="fa-brands fa-instagram" style="font-size: 2.5rem; color: #cbd5e1; transition: color 0.3s;"></i>
+                        <div class="video-box"
+                            style="cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: #0f172a;">
+                            <i class="fa-brands fa-instagram"
+                                style="font-size: 2.5rem; color: #cbd5e1; transition: color 0.3s;"></i>
+                            <span
+                                style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">View
+                                Instagram Reel</span>
                         </div>
                     </a>
                     <div class="video-info">Instagram Showcase Reel: Baggy Pleated Trousers</div>
                 </div>
 
-                <!-- CARD 3: TIKTOK BEHIND-THE-SCENES CAMPAIGN -->
                 <div class="video-card">
-                    <!-- Clickable block linking straight out to your TikTok post target -->
-                    <a href="https://tiktok.com/" target="_blank" style="text-decoration: none;">
-                        <div class="video-box" style="cursor: pointer;">
-                            <i class="fa-brands fa-tiktok" style="font-size: 2.5rem; color: #cbd5e1; transition: color 0.3s;"></i>
+                    <a href="https://tiktok.com" target="_blank" style="text-decoration: none;">
+                        <div class="video-box"
+                            style="cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: #0f172a;">
+                            <i class="fa-brands fa-tiktok"
+                                style="font-size: 2.5rem; color: #cbd5e1; transition: color 0.3s;"></i>
+                            <span
+                                style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Watch
+                                TikTok Clip</span>
                         </div>
                     </a>
                     <div class="video-info">TikTok Behind-the-Scenes: Custom Fabric Stacking</div>
                 </div>
-
             </div>
         </section>
 
-
-        <!-- 3RD COLUMN 3: FUTURE FASHION ARTICLES (SHIFTED TO LAST PLACE) -->
+        <!-- COLUMN 3: FUTURE FASHION ARTICLES -->
         <section class="column" id="articles-col">
             <h3><i class="fa-feather-pointed fa-solid"></i> Fashion Articles</h3>
             <div class="article-container">
                 <div class="article-placeholder">
-                    <h4>The Evolution of Ankara & Adire & Adire & Adire Streetwear</h4>
+                    <h4>The Evolution of Ankara & Adire Streetwear</h4>
                     <p>Coming Soon. An in-depth look at how traditional geometric prints are reclaiming global runways.
                     </p>
                 </div>
@@ -156,146 +330,247 @@
                 </div>
                 <div class="article-placeholder">
                     <h4>Behind the Snowdrop Motif</h4>
-                    <p>Coming Soon. Discovering the symbolism of our signature minimalist flower logo woven into our
-                        textiles.</p>
+                    <p>Coming Soon. Discovering the design heritage of our brand icon.</p>
                 </div>
             </div>
         </section>
-
     </main>
 
-
-    <!-- SECURE CEO CORRESPONDENCE -->
+    <!-- CEO DESK PANEL -->
     <section class="ceo-section" id="ceo-desk">
         <div class="ceo-card">
             <h3>From the CEO's Desk</h3>
-            <p>Welcome to the high-table of modern African heritage. At House of Snowdrop, we do not merely sew fabric; we engineer identity. Our signature collections transform the vibrant, historic geometry of traditional Ankara & Adire prints into sleek, contemporary streetwear, structured corporate separates, and bespoke executive couture tailored to stand out on a global stage. Every custom line cut, every minimalist flower accent, and every pattern alignment is crafted with uncompromising precision for the modern visionary who carries culture with pride. Step into our world, explore the master portfolio catalog, and let us co-author your style narrative today.Have an inquiry, custom design request, or partnership proposal? Reach out directly to the leadership
-                table via secure correspondence.</p>
-            <a href="mailto:snowdrop.conglomerate@gmail.com" class="ceo-btn">Send Secure Email</a>
+            <p style="font-style: italic; max-width: 800px; margin: 0 auto 1.5rem auto;">"Fashion isn't just about
+                clothes; it's a powerful art form. We engineer identity by transforming rich cultural geometry into
+                structural everyday couture."</p>
         </div>
     </section>
 
-    <!-- LIGHTBOX MODAL MAXIMIZER FRAME -->
-    <div class="lightbox" id="lightbox-modal">
-        <span class="lightbox-close" id="lightbox-close">&times;</span>
-        <img id="lightbox-img" src="" alt="Maximized Selection">
-    </div>
-
-    <!-- RESTORED FOOTER & REGISTRATION MODULE -->
+    <!-- GLOBAL FOOTER -->
+    <!-- GLOBAL FOOTER & SOCIAL CONNECTIVITY SUITE -->
     <footer id="contact-footer">
         <div class="footer-content">
-            <div class="social-indicators">
-                <h4>Connect With Our Channels</h4>
-                <div class="social-grid">
-                    <a href="https://wa.me/2348159296162" class="icon-wa social-icon" target="_blank"><i
-                            class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://instagram.com" class="icon-ig social-icon" target="_blank"><i
-                            class="fa-brands fa-instagram"></i></a>
-                    <a href="https://facebook.com" class="icon-fb social-icon" target="_blank"><i
-                            class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://tiktok.com" class="icon-tk social-icon" target="_blank"><i
-                            class="fa-brands fa-tiktok"></i></a>
-                    <a href="tel:+2348159296162" class="icon-call social-icon"><i class="fa-phone fa-solid"></i></a>
-                    <a href="sms:+2348142074866" class="icon-msg social-icon"><i
-                            class="fa-comment-sms fa-solid"></i></a>
+            <div>
+                <h4 style="margin-bottom: 1rem; color: #94a3b8; font-size: 1.15rem; letter-spacing: 0.5px;">OUR STORE
+                    LOCATION</h4>
+
+                <!-- Physical Address Display -->
+                <p style="font-size: 0.95rem; color: #ffffff; font-weight: 500; margin-bottom: 0.2rem;">House of
+                    Snowdrop Studio</p>
+                <p style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 0.75rem; line-height: 1.5;">
+                    Madojutim Junction,<br>
+                    Abiola Way,Abeokuta,<br>
+                    Ogun-State, Nigeria.
+                </p>
+
+                <!-- Dynamic Driving Directions Link -->
+                <!-- 💡 Replace the address text inside 'query=' with your exact address string -->
+                <a href="https://google.com" target="_blank" class="map-address-link"
+                    style="display: inline-flex; align-items: center; gap: 0.5rem; color: #60a5fa; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.2s;">
+                    <i class="fa-diamond-turn-right fa-solid"></i> Drive there
+                </a>
+
+                <!-- Native Telephony Direct Communications Group -->
+                <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                    <a href="tel:+2348142074866"
+                        style="color: #cbd5e1; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
+                        <i class="fa-phone fa-solid" style="color: #cbd5e1;"></i> Call: +234 800 000 0000
+                    </a>
+                    <a href="https://wa.me/+2348159296162" target="_blank"
+                        style="color: #cbd5e1; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
+                        <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> Message on WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="footer-legal">
-                <h4>Our Physical Maison & Legal</h4>
-                <p><strong>Maison Address:</strong> Madojutimi Junction, Abiola way, Abeokuta, Ogun State, Nigeria</p>
-                <a href="https://google.com" target="_blank" class="map-address-link">
-                    <i class="fa-map-location-dot fa-solid"></i> Get Live Driving Directions to Store
-                </a>
-                <p style="margin-top: 1rem;"><strong>CAC Registration Number:</strong> RC-XXXXXXXX (Corporate Affairs
-                    Commission, Nigeria)</p>
-                <p><strong>Disclaimer:</strong> All custom garments, Ankara & Adire & Adire & Adire blend, and fabric panels showcased
-                    on this
-                    platform are exclusive designs of House of Snowdrop.</p>
+
+            <div class="social-indicators">
+                <h4 style="margin-bottom: 1rem; color: #94a3b8; font-size: 1.15rem; letter-spacing: 0.5px;">CONNECT WITH
+                    US</h4>
+                <div class="social-grid">
+                    <!-- social media handle paths inside href -->
+                    <a href="https://wa.me" target="_blank" class="icon-wa social-icon" title="WhatsApp Chat"><i
+                            class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="icon-ig social-icon"
+                        title="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank" class="icon-fb social-icon" title="Facebook Page"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://tiktok.com" target="_blank" class="icon-tk social-icon" title="TikTok Channel"><i
+                            class="fa-brands fa-tiktok"></i></a>
+                </div>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>&copy; 2026 House of SnowDrop. All Rights Reserved. Tailored with Pride in Nigeria.</p>
+            <p>&copy; 2026 House of Snowdrop. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- INLINE CROSSFADE AUTOMATION ARRAY AND ENGINE -->
 
-    <script>
-        var backgroundImages = [
-            'images/image1.jpeg', 'images/image2.jpeg', 'images/image3.jpeg', 'images/image4.jpeg',
-            'images/image5.jpeg', 'images/image6.jpeg', 'images/image7.jpeg', 'images/image8.jpeg',
-            'images/image9.jpeg', 'images/image10.jpeg', 'images/image11.jpeg', 'images/image12.jpeg',
-            'images/image13.jpeg', 'images/image14.jpeg', 'images/image15.jpeg', 'images/image16.jpeg',
-            'images/image17.jpeg', 'images/image18.jpeg', 'images/image19.jpeg', 'images/image20.jpeg',
-            'images/image21.jpeg', 'images/image22.jpeg', 'images/image23.jpeg', 'images/image24.jpeg',
-            'images/image25.jpeg', 'images/image26.jpeg', 'images/image27.jpeg', 'images/image28.jpeg',
-            'images/image29.jpeg', 'images/image30.jpeg', 'images/image31.jpeg', 'images/image32.jpeg',
-            'images/image33.jpeg', 'images/image34.jpeg', 'images/image35.jpeg', 'images/image36.jpeg'
+    <!-- LIGHTBOX PREVIEW MODAL FRAME -->
+    <div class="lightbox" id="lightbox-modal">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Maximized View">
+    </div>
+
+    <!-- 1. CENTRAL PRODUCTS DATA MODULE CONFIGURATION LINK -->
+    <script src="products.js"></script>
+
+    <!-- 2. SYSTEM CONTROL LOGIC SCRIPT ENGINE -->
+       <script>
+        const heroCollection = [
+            { src: 'images/hero/slide1.jpeg' },
+            { src: 'images/hero/slide2.jpeg' },
+            { src: 'images/hero/slide1.jpeg' },
+            { src: 'images/hero/slide2.jpeg' },
+            { src: 'images/hero/slide1.jpeg' },
+            { src: 'images/hero/slide2.jpeg' },
+            { src: 'images/hero/slide3.jpeg' }
         ];
 
-        var lastIndex = -1;
+        document.addEventListener('DOMContentLoaded', () => {
+            /* 1. TIMING TICKER CLOCK LOGIC */
+            const timeBox = document.getElementById('live-datetime');
+            const updateTime = () => {
+                timeBox.textContent = new Date().toLocaleDateString('en-US', {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
+                });
+            };
+            setInterval(updateTime, 1000); updateTime();
 
-        function rotateCardBackground() {
-            var bgLayer = document.getElementById('gallery-bg-layer');
-            if (!bgLayer || !backgroundImages.length) return;
+            /* 2. NAVIGATION SIDE PANELS TRIGGER */
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
 
-            var randomIndex;
-            do {
-                randomIndex = Math.floor(Math.random() * backgroundImages.length);
-            } while (randomIndex === lastIndex && backgroundImages.length > 1);
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
 
-            lastIndex = randomIndex;
-            bgLayer.style.backgroundImage = "url(" + backgroundImages[randomIndex] + ")";
-        }
+            // Close sliding mobile panel drawer instantly when any nav item link is tapped
+            const mobileMenuLinks = navLinks.querySelectorAll('.nav-item');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active'); 
+                });
+            });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            // 1. Fire the image background rotation engine
-            rotateCardBackground();
-            setInterval(rotateCardBackground, 4000);
+            /* 3. HERO CAROUSEL GENERATION (WITH CLICK LIGHTBOX HOOKS) */
+            const swiperTrack = document.getElementById('hero-swipe-track');
+            heroCollection.forEach(imgObj => {
+                const itemSlide = document.createElement('div');
+                itemSlide.className = 'hero-slide';
+                itemSlide.innerHTML = `<img src="${imgObj.src}" alt="House of Snowdrop Luxury Collection Artwork">`;
 
-            // 2. FIXED HOMEPAGE MENU MECHANICS: Absolute internal toggle listener
-            var menuToggle = document.getElementById('menu-toggle');
-            var navLinks = document.getElementById('nav-links');
-
-            if (menuToggle && navLinks) {
-                menuToggle.addEventListener('click', function () {
-                    navLinks.classList.toggle('active');
+                const slideImg = itemSlide.querySelector('img');
+                slideImg.addEventListener('click', () => {
+                    document.getElementById('lightbox-img').src = imgObj.src;
+                    document.getElementById('lightbox-modal').style.display = 'flex';
                 });
 
-                // Auto-collapse navigation panel after single target choice selection clicks
-                document.querySelectorAll('.nav-item').forEach(function (link) {
-                    link.addEventListener('click', function () {
-                        navLinks.classList.remove('active');
-                    });
-                });
+                swiperTrack.appendChild(itemSlide);
+            });
+
+            /* 4. HERO AUTOMATIC TIMER SLIDER ENGINE */
+            let slideTimer;
+            let currentSlideIndex = 0;
+            const totalSlides = heroCollection.length;
+
+            const advanceSlider = () => {
+                currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+                const slideWidth = swiperTrack.getBoundingClientRect().width || swiperTrack.clientWidth;
+                swiperTrack.scrollTo({ left: currentSlideIndex * slideWidth, behavior: 'smooth' });
+            };
+
+            const startAutoCycle = () => { slideTimer = setInterval(advanceSlider, 5000); };
+            const stopAutoCycle = () => { clearInterval(slideTimer); };
+
+            startAutoCycle();
+            swiperTrack.addEventListener('touchstart', stopAutoCycle, { passive: true });
+            swiperTrack.addEventListener('mouseenter', stopAutoCycle);
+            swiperTrack.addEventListener('touchend', () => {
+                const slideWidth = swiperTrack.getBoundingClientRect().width || swiperTrack.clientWidth;
+                if (slideWidth > 0) currentSlideIndex = Math.round(swiperTrack.scrollLeft / slideWidth);
+                startAutoCycle();
+            }, { passive: true });
+            swiperTrack.addEventListener('mouseleave', startAutoCycle);
+
+            /* 5. RANDOMIZED CROSS-FADE BACKGROUND ENGINE (FIXED METHOD) */
+            let bgIndex = 0;
+            const layer1 = document.getElementById('gallery-bg-layer-1');
+            const layer2 = document.getElementById('gallery-bg-layer-2');
+            const bgHitbox = document.getElementById('gallery-bg-hitbox');
+            let activeLayer = layer1;
+
+            const shuffledGallery = (typeof galleryInventory !== 'undefined' && galleryInventory.length > 0)
+                ? [...galleryInventory].sort(() => Math.random() - 0.5)
+                : [];
+
+            const changeGalleryBackground = () => {
+                if (shuffledGallery.length > 0) {
+                    const nextImgUrl = shuffledGallery[bgIndex].src;
+                    const nextLayer = (activeLayer === layer1) ? layer2 : layer1;
+
+                    const imgLoader = new Image();
+                    imgLoader.src = nextImgUrl;
+                    imgLoader.onload = () => {
+                        nextLayer.style.backgroundImage = `url('${nextImgUrl}')`;
+                        nextLayer.classList.add('visible');
+                        activeLayer.classList.remove('visible');
+                        activeLayer = nextLayer;
+                        bgIndex = (bgIndex + 1) % shuffledGallery.length;
+                    };
+                }
+            };
+
+            if (shuffledGallery.length > 0) {
+                activeLayer.style.backgroundImage = `url('${shuffledGallery[bgIndex].src}')`;
+                bgIndex++;
+                setInterval(changeGalleryBackground, 5000); 
             }
 
-            // 3. Click-to-maximize card background hitbox action launcher
-            var cardHitbox = document.getElementById('gallery-bg-hitbox');
-            if (cardHitbox) {
-                cardHitbox.addEventListener('click', function () {
-                    var bgLayer = document.getElementById('gallery-bg-layer');
-                    if (bgLayer && bgLayer.style.backgroundImage) {
-                        var cleanUrl = bgLayer.style.backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
-                        if (typeof openLightbox === 'function') {
-                            openLightbox(cleanUrl);
+            // 🟢 PERMANENT ARCHITECTURAL FIX: 
+            // 1. Force the invisible giant sheet of glass to ignore direct clicks so links can be felt underneath it
+            if (bgHitbox) {
+                bgHitbox.style.pointerEvents = 'none'; 
+            }
+
+            // 2. Attach the zoom maximization event handler directly to the parent layout column instead!
+            const gallerySectionColumn = document.getElementById('gallery-col');
+            if (gallerySectionColumn) {
+                gallerySectionColumn.style.cursor = 'pointer';
+                gallerySectionColumn.addEventListener('click', (e) => {
+                    // Only trigger the zoom lookup modal if the user clicks the background space, NOT the link buttons
+                    if (e.target.tagName !== 'A' && !e.target.closest('.transparent-btn')) {
+                        if (activeLayer && activeLayer.style.backgroundImage) {
+                            const currentImgUrl = activeLayer.style.backgroundImage.slice(5, -2).replace(/"/g, "");
+                            if (currentImgUrl) {
+                                document.getElementById('lightbox-img').src = currentImgUrl;
+                                document.getElementById('lightbox-modal').style.display = 'flex';
+                            }
                         }
                     }
                 });
             }
+
+            /* 6. UNIVERSAL LOGO LIGHTBOX ZOOM CONTROL CLOSURES */
+            const brandLogo = document.getElementById('clickable-logo');
+            if (brandLogo) {
+                brandLogo.addEventListener('click', () => {
+                    document.getElementById('lightbox-img').src = brandLogo.src;
+                    document.getElementById('lightbox-modal').style.display = 'flex';
+                });
+            }
+
+            document.getElementById('lightbox-close').addEventListener('click', () => {
+                document.getElementById('lightbox-modal').style.display = 'none';
+            });
+            document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('lightbox-modal')) {
+                    document.getElementById('lightbox-modal').style.display = 'none';
+                }
+            });
         });
     </script>
 
-    <!-- Link to your external script sheet asset file -->
-    <script src="script.js"></script>
 </body>
 
 </html>
-
-
-
-
-
-

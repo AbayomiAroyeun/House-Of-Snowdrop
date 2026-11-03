@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HOUSE OF SNOW DROP - GLOBAL PRODUCTION STYLESHEET
+   HOUSE OF SNOWDROP - GLOBAL PRODUCTION STYLESHEET
    ========================================================================== */
 
 /* ROOT VARIABLES & RESET */
@@ -42,22 +42,36 @@ header {
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem; /* Elongated premium spacing */
 }
 
 .logo-container {
-    width: 50px;
-    height: 50px;
+    width: 68px;        /* 🟢 Increased from 50px for crisp, high-end visibility */
+    height: 68px;       /* 🟢 Perfectly proportioned bounding frame */
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50%; /* Pristine circular cropping profile */
+    border: 2px solid #ffffff; /* 🟢 High-contrast luxury boundary ring line */
+    padding: 2px;       /* Inset breathing air gap inside the frame */
+    background-color: #ffffff; /* Ensures contrast safety regardless of image transparency */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 
+                0 4px 10px rgba(0, 0, 0, 0.3); /* 🟢 Multi-layered premium ambient glow */
+    transition: transform 0.4s cubic-bezier(0.1, 1, 0.1, 1);
 }
 
-/* INFINITE 60-SECOND ALTERNATING LOGO LOOP */
+.logo-container:hover {
+    transform: scale(1.08); /* Sophisticated responsive engagement pop on hover */
+}
+
+
+/* KEEPS CONTINUOUS REVOLVING LOGO ENGINE ACTIVE WITH HARDWARE ACCELERATION */
 .spinning-logo {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover; /* 🟢 Ensures your artwork fills the circle without squishing or distortion */
+    border-radius: 50%;
+    will-change: transform; /* Boosts smartphone mobile processing speeds */
     animation: alternatingSpin 60s linear infinite;
 }
 
@@ -67,15 +81,24 @@ header {
     100% { transform: rotate(360deg); }
 }
 
+/* HIGH-END MAISON TYPOGRAPHY REVISION */
 .brand-text h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-size: 1.65rem;
+    font-weight: 300; /* Elegant light-luxury stroke appearance */
+    text-transform: uppercase; /* Classic haute couture capitalization rules */
+    letter-spacing: 2.5px; /* Spreads out text beautifully like a premium label */
+    color: #ffffff;
+    font-family: serif; /* Imbues high-fashion editorial texture */
+    margin: 0;
+    line-height: 1.2;
 }
 
 .datetime-display {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #94a3b8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 0.15rem;
 }
 
 /* HAMBURGER MENU ACTIONS */
@@ -107,7 +130,7 @@ header {
     gap: 1.5rem;
     transition: right 0.4s cubic-bezier(0.1, 1, 0.1, 1);
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-    z-index: 1005; /* Elevates it above header blocks and text shields */
+    z-index: 1005;
 }
 
 .nav-menu.active {
@@ -126,23 +149,65 @@ header {
     color: var(--accent);
 }
 
-/* HERO BANNER SECTION */
-.hero {
+/* 🆕 NEW NATIVE LEFT-SWIPE CAROUSEL SYSTEM */
+.hero-carousel-viewport {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
     margin-top: 70px;
-    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://unsplash.com') no-repeat center center/cover;
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    padding: 0 1rem;
+    background-color: #000;
 }
 
-.hero h2 {
+.hero-carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Fast touch mechanics for smartphones */
+}
+
+.hero-carousel-track::-webkit-scrollbar {
+    display: none; /* Strips desktop bars to keep aesthetics clean */
+}
+
+.hero-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.55));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Passes swipes cleanly down to imagery track layer */
+}
+
+.carousel-overlay h2 {
+    color: #ffffff;
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: serif;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
+    margin: 0;
+    padding: 0 1rem;
 }
 
 /* 3-COLUMN STRUCTURE MAIN PAGE CONFIG */
@@ -172,6 +237,23 @@ header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+/* BUTTON ENGINE RESTRUCTURING */
+.ceo-btn {
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.ceo-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
 }
 
 /* ARTICLES TEXT AREA */
@@ -353,21 +435,30 @@ footer {
 .social-indicators h4 { margin-bottom: 1rem; color: #94a3b8; }
 .social-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
 
+/* SOCIAL ICON HOVER TRANSITION MATRICES */
 .social-icon {
-    width: 45px; height: 45px;
-    background-color: #1e293b; border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    color: white; text-decoration: none; font-size: 1.3rem;
-    transition: all 0.3s;
+    width: 45px;
+    height: 45px;
+    background-color: #1e293b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: all 0.3s cubic-bezier(0.1, 1, 0.1, 1);
 }
 
-.social-icon:hover { transform: translateY(-3px); }
-.icon-wa:hover { background-color: #25d366; }
-.icon-ig:hover { background-color: #e1306c; }
-.icon-fb:hover { background-color: #1877f2; }
-.icon-tk:hover { background-color: #000000; }
-.icon-call:hover { background-color: #10b981; }
-.icon-msg:hover { background-color: #3b82f6; }
+.social-icon:hover {
+    transform: translateY(-3px);
+}
+
+.icon-wa:hover { background-color: #25d366; color: white; }
+.icon-ig:hover { background-color: #e1306c; color: white; }
+.icon-fb:hover { background-color: #1877f2; color: white; }
+.icon-tk:hover { background-color: #000000; color: white; }
+
 
 .footer-legal p { font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem; }
 .footer-bottom { text-align: center; font-size: 0.85rem; color: #64748b; }
@@ -375,39 +466,29 @@ footer {
 /* ==========================================================================
    MOBILE BREAKPOINTS & RESPONSIVE ADAPTATIONS
    ========================================================================== */
-@media (max-width: 1024px) {
+@media screen and (max-width: 992px) {
     .main-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stacks column sections safely on iPads and tablets */
         gap: 1.5rem;
-        padding: 0 4%;
     }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-carousel-viewport {
+        height: 38vh !important; /* Immediately prioritizes layout sight above fold on smartphones */
+    }
+    
+    .main-container {
+        padding-top: 0.5rem !important;
+        margin-top: 0 !important;
+    }
+
+    #gallery-col {
+        min-height: auto !important;
+        margin-bottom: 1.5rem !important;
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
     }
-}
-
-@media (max-width: 600px) {
-    header { padding: 0.75rem 4%; }
-    .logo-area { gap: 0.6rem; }
-    .logo-container { width: 40px; height: 40px; }
-    .brand-text h1 { font-size: 1.15rem; letter-spacing: 0.5px; }
-    .datetime-display { font-size: 0.7rem; }
-    .hamburger span { width: 26px; height: 2.5px; }
-    .nav-menu { width: 85%; padding: 6rem 1.5rem 1.5rem 1.5rem; }
-    .hero { margin-top: 60px; height: 30vh; }
-    .hero h2 { font-size: 1.8rem; }
-    .hero p { font-size: 0.9rem; }
-    .column { padding: 1rem; border-radius: 8px; }
-    .column h3 { font-size: 1.15rem; margin-bottom: 1rem; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
-    .lightbox img { max-width: 95%; max-height: 70vh; }
-    .lightbox-close { top: 15px; right: 20px; font-size: 2rem; }
-    .ceo-card { padding: 1.5rem 1rem; }
-    .ceo-card h3 { font-size: 1.25rem; }
-}
-
-@media (max-width: 360px) {
-    .brand-text h1 { font-size: 1rem; }
-    .gallery-grid { grid-template-columns: 1fr; }
 }
