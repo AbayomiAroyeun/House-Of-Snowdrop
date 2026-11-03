@@ -10,11 +10,11 @@
     <!-- Link to External Stylesheet -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* PRIORITY RENDERING FOR MOBILE SMARTPHONE SCREENS */
+        /* MOBILE-FIRST VIEWPORT AND PROFILE SYNCHRONIZATION */
         @media screen and (max-width: 768px) {
             .hero-carousel-viewport {
-                height: 38vh !important;
-                /* Immediately visible above phone fold area */
+                height: 470px !important;
+                /* 🟢 MATCH: Set to the exact height block of your Design Gallery card */
             }
 
             .main-container {
@@ -23,7 +23,7 @@
             }
 
             #gallery-col {
-                min-height: auto !important;
+                min-height: 470px !important;
                 margin-bottom: 1.5rem !important;
             }
         }
@@ -32,10 +32,11 @@
         .hero-carousel-viewport {
             position: relative;
             width: 100%;
-            height: 50vh;
+            height: 500px;
             overflow: hidden;
             margin-top: 70px;
-            background-color: #000;
+            background-color: #ffffff;
+            /* 🟢 FIX: Changed base workspace background color from black to crisp white */
         }
 
         .hero-carousel-track {
@@ -57,12 +58,22 @@
             width: 100%;
             height: 100%;
             scroll-snap-align: start;
+            background-color: #ffffff;
+            /* Ensures white backgrounds carry across empty loading spaces */
+            padding: 1.5rem;
+            /* Inset breathing space padding to stop clothing crops from hitting layout outer boundaries */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero-slide img {
-            width: 100%;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
             object-fit: contain;
+            /* 🟢 FIX: Stops model heads/outfits from getting cut off before zoom clicking */
             cursor: pointer;
         }
 
@@ -72,24 +83,23 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45));
+            background: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.3));
+            /* Lightweight soft light mask layer */
             display: flex;
             align-items: center;
             justify-content: center;
             pointer-events: none;
         }
 
-        /* 🆕 WATERMARK STYLE HERO CAPTION REFINEMENT */
+        /* WATERMARK HERO CAPTION REFINEMENT */
         .carousel-overlay h2 {
-            color: #ffffff;
+            color: #000000;
+            /* Darker watermark tone contrast offset for text safety over new white lookbook space */
             font-size: 2.8rem;
             text-transform: uppercase;
             letter-spacing: 6px;
-            /* Spreads letters out like an artistic watermark imprint */
             font-weight: 300;
-            /* Beautiful thin presentation stroke weight */
-            opacity: 0.25;
-            /* Ghost translucent wash effect */
+            opacity: 0.15;
             text-align: center;
             font-family: serif;
             margin: 0;
@@ -116,15 +126,13 @@
             opacity: 1;
         }
 
-        /* 🆕 MINIMIZED AND SCALED DOWN DESIGN GALLERY HEADER */
+        /* MINIMIZED AND SCALED DOWN DESIGN GALLERY HEADER */
         #gallery-col h3 {
             color: #ffffff !important;
             font-size: 1.15rem !important;
-            /* Compact refined scale dimensions */
             font-weight: 400 !important;
             letter-spacing: 1px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-            /* Slim low-contrast boundary line */
             padding-bottom: 0.4rem;
             display: inline-flex;
             justify-content: center;
@@ -135,25 +143,21 @@
             text-transform: uppercase;
         }
 
-        /* 🆕 ELEGANT LIGHT-APPEARANCE SEAMLESS TEXT ACTION LINKS */
+        /* ELEGANT LIGHT-APPEARANCE SEAMLESS TEXT ACTION LINKS */
         .transparent-btn {
             display: block;
             margin: 0.5rem 0;
             width: 100%;
             padding: 0.6rem 1.2rem;
             font-size: 0.95rem;
-            /* Scaled down text size to look highly professional */
             font-weight: 400;
-            /* Soft light font stroke thickness */
             text-decoration: none;
             text-align: center;
             border-radius: 6px;
             background: transparent !important;
             border: none !important;
             color: #e2e8f0;
-            /* Off-white light tint tone */
             letter-spacing: 0.5px;
-            /* Subtle protective shadow so text remains visible over light imagery patterns */
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
             transition: color 0.25s ease, transform 0.25s ease;
         }
@@ -184,7 +188,6 @@
                 <img src="images/logo.jpeg" alt="House of Snowdrop Logo" class="spinning-logo" id="clickable-logo"
                     style="cursor: pointer;">
             </div>
-
             <div class="brand-text">
                 <h1>House of Snowdrop</h1>
                 <div class="datetime-display" id="live-datetime">Loading Date & Time...</div>
@@ -192,24 +195,17 @@
         </div>
 
         <div class="hamburger" id="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
 
-        <!-- Sliding Navigation Pane -->
-        <!-- Sliding Navigation Pane -->
         <nav class="nav-menu" id="nav-links">
-            <a href="index.html" class="nav-item">Home</a>
-            <!--  LINK IDENTITY SYNC: Maps to the same lookbook file for consistent cascading layout effects -->
-            <a href="gallery.html" class="nav-item">All Designs</a>
-            <a href="index.html#videos-col" class="nav-item">Social Adverts</a>
-            <a href="index.html#articles-col" class="nav-item">Fashion Articles</a>
-            <a href="index.html#ceo-desk" class="nav-item">CEO's Desk</a>
-            <a href="index.html#contact-footer" class="nav-item">Find Our Store</a>
+            <a href="#hero" class="nav-item">Home</a>
+            <a href="#gallery-col" class="nav-item">Design Gallery</a>
+            <a href="#videos-col" class="nav-item">Social Media Adverts</a>
+            <a href="#articles-col" class="nav-item">Fashion Articles</a>
+            <a href="#ceo-desk" class="nav-item">CEO's Table Email</a>
+            <a href="#contact-footer" class="nav-item">Contact & Socials</a>
         </nav>
-
-
     </header>
 
     <!-- SWIPE LEFT HERO CAROUSEL SECTION -->
@@ -225,11 +221,10 @@
     <!-- CORE Layout Columns -->
     <main class="main-container">
 
-        <!-- COLUMN 1: DESIGN GALLERY SECTION WITH SMOOTH CROSS-FADE ANIMATION LINKS -->
+        <!-- COLUMN 1: DESIGN GALLERY WITH SMOOTH BACK-BUFFER IMAGE TRANSITIONS -->
         <section class="column" id="gallery-col"
             style="position: relative; overflow: hidden; min-height: 470px; padding: 0; border-radius: 12px; display: flex; flex-direction: column;">
 
-            <!-- Dual layers to preserve seamless cross-fade visual animations -->
             <div id="gallery-bg-layer-1" class="gallery-fade-layer visible"></div>
             <div id="gallery-bg-layer-2" class="gallery-fade-layer"></div>
 
@@ -243,45 +238,33 @@
                 style="position: relative; z-index: 4; background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.75)); padding: 2rem 1.5rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; color: white; height: 100%; pointer-events: none;">
 
                 <div style="text-align: center; margin-top: 0.5rem;">
-                    <!-- Sits seamlessly centered with compact proportions -->
                     <h3><i class="fa-images fa-solid"></i> Design Gallery</h3>
                 </div>
 
-
-                <!-- Outline Button Configurations with direct links and search lens icon -->
                 <div style="text-align: center; width: 100%; margin-bottom: 1rem; pointer-events: auto;">
-                    <!-- shop now goes to the Master Catalog grid -->
                     <a href="gallery.html" class="btn-shop transparent-btn">🔍 shop now</a>
-                    
-                    <!-- View delivered orders goes to soldout.html (Customer Photos) -->
-                    <a href="soldout.html" class="btn-delivered transparent-btn"> View delivered orders</a>
-                    
-                    <!-- See our Models goes to instock.html (Mannequin / Ready Stock) -->
-                    <a href="instock.html" class="btn-models transparent-btn"> See our Models</a>
+                    <a href="soldout.html" class="btn-delivered transparent-btn">View delivered orders</a>
+                    <a href="instock.html" class="btn-models transparent-btn">See our Models</a>
                 </div>
-
-
-
             </div>
         </section>
-
-
         <!-- COLUMN 2: SOCIAL MEDIA ADVERTS SECTION -->
         <section class="column" id="videos-col">
             <h3><i class="fa-play fa-solid"></i> Social Media Adverts</h3>
             <div class="video-container">
                 <div class="video-card">
-                    <a href="https://youtu.be" target="_blank" style="text-decoration: none;">
+                    <a href="https://www.youtube.com/watch?v=0jptXSw_pS4" target="_blank"
+                        style="text-decoration: none;">
                         <div class="video-box"
                             style="cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: #0f172a;">
                             <i class="fa-play fa-solid"
                                 style="font-size: 2.5rem; color: #cbd5e1; transition: color 0.3s;"></i>
                             <span
-                                style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Click
-                                to watch</span>
+                                style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">CLICK
+                                TO Play</span>
                         </div>
                     </a>
-                    <div class="video-info">Our Advertiments</div>
+                    <div class="video-info">Official Launch Campaign</div>
                 </div>
 
                 <div class="video-card">
@@ -295,7 +278,7 @@
                                 Instagram Reel</span>
                         </div>
                     </a>
-                    <div class="video-info">Our Models</div>
+                    <div class="video-info">Instagram Showcase Reel</div>
                 </div>
 
                 <div class="video-card">
@@ -309,7 +292,7 @@
                                 TikTok Clip</span>
                         </div>
                     </a>
-                    <div class="video-info">Behind-the-Scenes: Factory Actions</div>
+                    <div class="video-info">Behind-the-Scenes: Custom Fabric Stacking</div>
                 </div>
             </div>
         </section>
@@ -346,15 +329,12 @@
         </div>
     </section>
 
-    <!-- GLOBAL FOOTER -->
-    <!-- GLOBAL FOOTER & SOCIAL CONNECTIVITY SUITE -->
+    <!-- GLOBAL FOOTER WITH ADJOINED EMAIL REGISTRY -->
     <footer id="contact-footer">
         <div class="footer-content">
             <div>
                 <h4 style="margin-bottom: 1rem; color: #94a3b8; font-size: 1.15rem; letter-spacing: 0.5px;">OUR STORE
                     LOCATION</h4>
-
-                <!-- Physical Address Display -->
                 <p style="font-size: 0.95rem; color: #ffffff; font-weight: 500; margin-bottom: 0.2rem;">House of
                     Snowdrop Studio</p>
                 <p style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 0.75rem; line-height: 1.5;">
@@ -363,15 +343,17 @@
                     Ogun-State, Nigeria.
                 </p>
 
-                <!-- Dynamic Driving Directions Link -->
-                <!-- 💡 Replace the address text inside 'query=' with your exact address string -->
                 <a href="https://google.com" target="_blank" class="map-address-link"
                     style="display: inline-flex; align-items: center; gap: 0.5rem; color: #60a5fa; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.2s;">
-                    <i class="fa-diamond-turn-right fa-solid"></i> Drive there
+                    <i class="fa-diamond-turn-right fa-solid"></i> Drive Here via Google Maps
                 </a>
 
-                <!-- Native Telephony Direct Communications Group -->
                 <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                    <!-- 🟢 NEW: Integrated Dedicated Brand Email Endpoint -->
+                    <a href="mailto:snowdropdyasty@gmail.com"
+                        style="color: #cbd5e1; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
+                        <i class="fa-envelope fa-solid" style="color: #cbd5e1;"></i> Email: info@houseofsnowdrop.com
+                    </a>
                     <a href="tel:+2348142074866"
                         style="color: #cbd5e1; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
                         <i class="fa-phone fa-solid" style="color: #cbd5e1;"></i> Call: +234 800 000 0000
@@ -383,20 +365,18 @@
                 </div>
             </div>
 
-
             <div class="social-indicators">
                 <h4 style="margin-bottom: 1rem; color: #94a3b8; font-size: 1.15rem; letter-spacing: 0.5px;">CONNECT WITH
                     US</h4>
                 <div class="social-grid">
-                    <!-- social media handle paths inside href -->
                     <a href="https://wa.me" target="_blank" class="icon-wa social-icon" title="WhatsApp Chat"><i
                             class="fa-brands fa-whatsapp"></i></a>
                     <a href="https://instagram.com" target="_blank" class="icon-ig social-icon"
                         title="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://facebook.com" target="_blank" class="icon-fb social-icon" title="Facebook Page"><i
                             class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://tiktok.com" target="_blank" class="icon-tk social-icon" title="TikTok Channel"><i
-                            class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://tiktok.com@yourhandle" target="_blank" class="icon-tk social-icon"
+                        title="TikTok Channel"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
@@ -405,30 +385,33 @@
         </div>
     </footer>
 
-
-    <!-- LIGHTBOX PREVIEW MODAL FRAME -->
     <div class="lightbox" id="lightbox-modal">
         <span class="lightbox-close" id="lightbox-close">&times;</span>
         <img id="lightbox-img" src="" alt="Maximized View">
     </div>
 
-    <!-- 1. CENTRAL PRODUCTS DATA MODULE CONFIGURATION LINK -->
+    <!-- LINK THE DYNAMIC CENTRAL DATA SOURCE SHEET -->
     <script src="products.js"></script>
 
-    <!-- 2. SYSTEM CONTROL LOGIC SCRIPT ENGINE -->
-       <script>
+    <!-- 1. LINK THE DYNAMIC CENTRAL DATA SOURCE SHEET -->
+    <script src="products.js"></script>
+
+    <!-- 2. SYSTEM INTERACTION ENGINE CONTROL LOGIC -->
+    <script>
+        // Dedicated lookbook slider graphics array
         const heroCollection = [
             { src: 'images/hero/slide1.jpeg' },
             { src: 'images/hero/slide2.jpeg' },
             { src: 'images/hero/slide3.jpeg' },
             { src: 'images/hero/slide4.jpeg' },
             { src: 'images/hero/slide5.jpeg' },
-            { src: 'images/hero/slide6.jpeg' },
-            { src: 'images/hero/slide3.jpeg' }
+            { src: 'images/hero/slide6.jpeg' }
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
-            /* 1. TIMING TICKER CLOCK LOGIC */
+            /* ==========================================================================
+               1. TIMING TICKER CLOCK LOGIC
+               ========================================================================== */
             const timeBox = document.getElementById('live-datetime');
             const updateTime = () => {
                 timeBox.textContent = new Date().toLocaleDateString('en-US', {
@@ -437,44 +420,55 @@
             };
             setInterval(updateTime, 1000); updateTime();
 
-            /* 2. NAVIGATION SIDE PANELS TRIGGER */
+            /* ==========================================================================
+               2. NAVIGATION SIDE PANELS TRIGGER WITH LINK AUTO-CLOSES
+               ========================================================================== */
             const menuToggle = document.getElementById('menu-toggle');
             const navLinks = document.getElementById('nav-links');
 
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-
-            // Close sliding mobile panel drawer instantly when any nav item link is tapped
-            const mobileMenuLinks = navLinks.querySelectorAll('.nav-item');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active'); 
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
                 });
-            });
 
-            /* 3. HERO CAROUSEL GENERATION (WITH CLICK LIGHTBOX HOOKS) */
+                const mobileMenuLinks = navLinks.querySelectorAll('.nav-item');
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+
+            /* ==========================================================================
+               3. HERO CAROUSEL GENERATION (WITH CLICK LIGHTBOX HOOKS)
+               ========================================================================== */
             const swiperTrack = document.getElementById('hero-swipe-track');
-            heroCollection.forEach(imgObj => {
-                const itemSlide = document.createElement('div');
-                itemSlide.className = 'hero-slide';
-                itemSlide.innerHTML = `<img src="${imgObj.src}" alt="House of Snowdrop Luxury Collection Artwork">`;
+            if (swiperTrack) {
+                heroCollection.forEach(imgObj => {
+                    const itemSlide = document.createElement('div');
+                    itemSlide.className = 'hero-slide';
+                    itemSlide.innerHTML = `<img src="${imgObj.src}" alt="House of Snowdrop Luxury Collection Artwork">`;
 
-                const slideImg = itemSlide.querySelector('img');
-                slideImg.addEventListener('click', () => {
-                    document.getElementById('lightbox-img').src = imgObj.src;
-                    document.getElementById('lightbox-modal').style.display = 'flex';
+                    const slideImg = itemSlide.querySelector('img');
+                    if (slideImg) {
+                        slideImg.addEventListener('click', () => {
+                            document.getElementById('lightbox-img').src = imgObj.src;
+                            document.getElementById('lightbox-modal').style.display = 'flex';
+                        });
+                    }
+                    swiperTrack.appendChild(itemSlide);
                 });
+            }
 
-                swiperTrack.appendChild(itemSlide);
-            });
-
-            /* 4. HERO AUTOMATIC TIMER SLIDER ENGINE */
+            /* ==========================================================================
+               4. HERO AUTOMATIC TIMER SLIDER ENGINE
+               ========================================================================== */
             let slideTimer;
             let currentSlideIndex = 0;
             const totalSlides = heroCollection.length;
 
             const advanceSlider = () => {
+                if (!swiperTrack) return;
                 currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
                 const slideWidth = swiperTrack.getBoundingClientRect().width || swiperTrack.clientWidth;
                 swiperTrack.scrollTo({ left: currentSlideIndex * slideWidth, behavior: 'smooth' });
@@ -483,29 +477,38 @@
             const startAutoCycle = () => { slideTimer = setInterval(advanceSlider, 5000); };
             const stopAutoCycle = () => { clearInterval(slideTimer); };
 
-            startAutoCycle();
-            swiperTrack.addEventListener('touchstart', stopAutoCycle, { passive: true });
-            swiperTrack.addEventListener('mouseenter', stopAutoCycle);
-            swiperTrack.addEventListener('touchend', () => {
-                const slideWidth = swiperTrack.getBoundingClientRect().width || swiperTrack.clientWidth;
-                if (slideWidth > 0) currentSlideIndex = Math.round(swiperTrack.scrollLeft / slideWidth);
+            if (swiperTrack && totalSlides > 0) {
                 startAutoCycle();
-            }, { passive: true });
-            swiperTrack.addEventListener('mouseleave', startAutoCycle);
+                swiperTrack.addEventListener('touchstart', stopAutoCycle, { passive: true });
+                swiperTrack.addEventListener('mouseenter', stopAutoCycle);
+                swiperTrack.addEventListener('touchend', () => {
+                    const slideWidth = swiperTrack.getBoundingClientRect().width || swiperTrack.clientWidth;
+                    if (slideWidth > 0) {
+                        currentSlideIndex = Math.round(swiperTrack.scrollLeft / slideWidth);
+                    }
+                    startAutoCycle();
+                }, { passive: true });
+                swiperTrack.addEventListener('mouseleave', startAutoCycle);
+            }
 
-            /* 5. RANDOMIZED CROSS-FADE BACKGROUND ENGINE (FIXED METHOD) */
+            /* ==========================================================================
+               5. RANDOMIZED CROSS-FADE BACKGROUND ENGINE (ENDLESS CYCLE FIX)
+               ========================================================================== */
             let bgIndex = 0;
             const layer1 = document.getElementById('gallery-bg-layer-1');
             const layer2 = document.getElementById('gallery-bg-layer-2');
             const bgHitbox = document.getElementById('gallery-bg-hitbox');
             let activeLayer = layer1;
 
+            // Sanitization filter scans products.js to prevent image path freezes
             const shuffledGallery = (typeof galleryInventory !== 'undefined' && galleryInventory.length > 0)
-                ? [...galleryInventory].sort(() => Math.random() - 0.5)
+                ? [...galleryInventory]
+                    .filter(item => item.src && item.src.trim() !== '')
+                    .sort(() => Math.random() - 0.5)
                 : [];
 
             const changeGalleryBackground = () => {
-                if (shuffledGallery.length > 0) {
+                if (shuffledGallery.length > 0 && layer1 && layer2) {
                     const nextImgUrl = shuffledGallery[bgIndex].src;
                     const nextLayer = (activeLayer === layer1) ? layer2 : layer1;
 
@@ -516,29 +519,34 @@
                         nextLayer.classList.add('visible');
                         activeLayer.classList.remove('visible');
                         activeLayer = nextLayer;
+
+                        // Endless Loop Engine: cycles indefinitely around length boundaries
                         bgIndex = (bgIndex + 1) % shuffledGallery.length;
+                    };
+                    imgLoader.onerror = () => {
+                        // Safely skip any broken link paths and auto-advance to protect layout loops
+                        bgIndex = (bgIndex + 1) % shuffledGallery.length;
+                        changeGalleryBackground();
                     };
                 }
             };
 
-            if (shuffledGallery.length > 0) {
+            if (shuffledGallery.length > 0 && activeLayer) {
                 activeLayer.style.backgroundImage = `url('${shuffledGallery[bgIndex].src}')`;
-                bgIndex++;
-                setInterval(changeGalleryBackground, 5000); 
+                bgIndex = (bgIndex + 1) % shuffledGallery.length;
+                setInterval(changeGalleryBackground, 5000);
             }
 
-            // 🟢 PERMANENT ARCHITECTURAL FIX: 
-            // 1. Force the invisible giant sheet of glass to ignore direct clicks so links can be felt underneath it
+            // PERMANENT HITBOX OVERLAY LINK CONFLICT CONTROLLER FIX
             if (bgHitbox) {
-                bgHitbox.style.pointerEvents = 'none'; 
+                bgHitbox.style.pointerEvents = 'none';
             }
 
-            // 2. Attach the zoom maximization event handler directly to the parent layout column instead!
             const gallerySectionColumn = document.getElementById('gallery-col');
             if (gallerySectionColumn) {
                 gallerySectionColumn.style.cursor = 'pointer';
                 gallerySectionColumn.addEventListener('click', (e) => {
-                    // Only trigger the zoom lookup modal if the user clicks the background space, NOT the link buttons
+                    // Verifies user did not target link buttons before launching lookups
                     if (e.target.tagName !== 'A' && !e.target.closest('.transparent-btn')) {
                         if (activeLayer && activeLayer.style.backgroundImage) {
                             const currentImgUrl = activeLayer.style.backgroundImage.slice(5, -2).replace(/"/g, "");
@@ -551,7 +559,9 @@
                 });
             }
 
-            /* 6. UNIVERSAL LOGO LIGHTBOX ZOOM CONTROL CLOSURES */
+            /* ==========================================================================
+               6. UNIVERSAL LOGO LIGHTBOX ZOOM SYSTEM
+               ========================================================================== */
             const brandLogo = document.getElementById('clickable-logo');
             if (brandLogo) {
                 brandLogo.addEventListener('click', () => {
@@ -560,17 +570,21 @@
                 });
             }
 
-            document.getElementById('lightbox-close').addEventListener('click', () => {
-                document.getElementById('lightbox-modal').style.display = 'none';
-            });
-            document.getElementById('lightbox-modal').addEventListener('click', (e) => {
-                if (e.target === document.getElementById('lightbox-modal')) {
-                    document.getElementById('lightbox-modal').style.display = 'none';
-                }
-            });
+            const modalClose = document.getElementById('lightbox-close');
+            const modalView = document.getElementById('lightbox-modal');
+
+            if (modalClose) {
+                modalClose.addEventListener('click', () => {
+                    modalView.style.display = 'none';
+                });
+            }
+            if (modalView) {
+                modalView.addEventListener('click', (e) => {
+                    if (e.target === modalView) modalView.style.display = 'none';
+                });
+            }
         });
     </script>
-
 </body>
 
 </html>
